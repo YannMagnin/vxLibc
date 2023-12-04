@@ -1,4 +1,4 @@
-# module used to provide common variable / functions
+# module used to provide common variables / functions
 # this file must not be manually invoked
 
 #---
@@ -22,7 +22,7 @@ function callcmd() {
     then
       echo "$@"
       if ! "$@"; then
-        echo "$TAG error: command failed, abord"
+        echo "$TAG error: command failed, abort"
         kill -s TERM $TOP_PID
       fi
   else

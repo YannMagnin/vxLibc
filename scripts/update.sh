@@ -6,7 +6,7 @@
 
 function help() {
   cat << EOF
-Update script the for vxLibc script (own implementation of the libc)
+Update script for the vxLibc project (own implementation of the libc)
 
 Usage: $0 [options...]
 
@@ -16,8 +16,8 @@ Options:
   -v, --verbose     display more information during operations
 
 Notes:
-    This project is a dependency of "sh-elf-vhex" compiler, manual
-  uninstallation can break all the toolchain.
+    This project is mainly installed automatically as a dependency of the
+  sh-elf-vhex (Vhex's compiler) project.
 EOF
   exit 0
 }
@@ -34,7 +34,7 @@ for arg; do
     -y | --yes)     skip_input=true;;
     -v | --verbose) verbose=true;;
     *)
-      echo "error: unreconized argument '$arg', giving up." >&2
+      echo "error: unrecognized argument '$arg', giving up." >&2
       exit 1
   esac
 done
@@ -57,10 +57,10 @@ prefix=$(cat '../_fxlibc/_build-vhex/sysroot.txt')
 if [[ "$skip_input" != 'true' ]]
 then
   echo "This script will update the vxLibc for the sysroot '$prefix'"
-  read -p 'Perform operation [Yn] ? ' -r valid
+  read -p 'Perform operations [Yn] ? ' -r valid
   if [[ "$valid" == 'n' ]]
   then
-    echo 'Operation aborded' >&2
+    echo 'Operations aborted' >&2
     exit 1
   fi
 fi
@@ -84,8 +84,8 @@ then
   echo "$TAG try to bump the vxOpenLibm dependency..."
   ../_vxopenlibm/scripts/update.sh --yes
 else
-  echo "$TAG WARNING: vxOpenLibm installed externaly, skipped"
+  echo "$TAG WARNING: vxOpenLibm installed externally, skipped"
 fi
 
-echo "$TAG update operation will reclone and rebuild the project..."
+echo "$TAG update operations will reclone and rebuild the project..."
 ./install.sh --prefix-sysroot="$prefix" --yes --overwrite

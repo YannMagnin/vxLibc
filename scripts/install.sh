@@ -6,7 +6,7 @@
 
 function help() {
   cat << EOF
-Installation script for vxLibc project (own implementation of the Libc)
+Installation script for the vxLibc project (own implementation of the Libc)
 
 Usage: $0 [options...]
 
@@ -18,7 +18,7 @@ Options:
       --overwrite       remove the cloned OpenLibm repo if already exists
 
 Notes:
-    This project is mainly automatically installed as a dependency of the
+    This project is mainly installed automatically as a dependency of the
   sh-elf-vhex (Vhex's compiler) project.
 EOF
   exit 0
@@ -40,7 +40,7 @@ for arg; do
          --prefix-sysroot=*)    prefix=${arg#*=};;
          --overwrite)           overwrite=true;;
     *)
-      echo "error: unreconized argument '$arg', giving up." >&2
+      echo "error: unrecognized argument '$arg', giving up." >&2
       exit 1
   esac
 done
@@ -51,16 +51,16 @@ done
 
 if test -z "$prefix"
 then
-  echo 'You need to specify the sysroot prefix, abord' >&2
+  echo 'You need to specify the sysroot prefix, abort' >&2
   exit 1
 fi
 
 if [[ ! $(sh-elf-vhex-gcc --version) ]]
 then
   echo -e \
-    'You need to install the sh-elf-vhex compiler to install this '       \
+    'You need to install the "sh-elf-vhex" compiler to install this '     \
     'project.\n'                                                          \
-    'Also note that the installation if the compiler will automatically ' \
+    'Also note that the installation of the compiler will automatically ' \
     'install this project'
   exit 1
 fi
@@ -83,7 +83,7 @@ then
   echo "  - overwrite = $overwrite"
   read -p 'Perform operations [Yn] ? ' -r valid
   if [[ "$valid" == 'n' ]]; then
-    echo 'Operation aborted' >&2
+    echo 'Operations aborted' >&2
     exit 1
   fi
 fi

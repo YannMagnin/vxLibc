@@ -1,6 +1,6 @@
 # This cmake file will be dropped at the root of the openlibm repository
-# folder and need to be the more generic as possible to support further
-# update of the original project
+# folder and need to be as generic as possible to support further update
+# of the original project
 cmake_minimum_required(VERSION 3.5)
 
 ## fetch source files
