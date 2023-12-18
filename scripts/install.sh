@@ -99,7 +99,7 @@ fi
 echo "$TAG check if the vxOpenLibc is installed..."
 if ! test -f "$prefix/lib/libm.a"
 then
-  echo "$TAG install the vxOpenLibm..."
+  echo "$TAG cloning the vxOpenLibm..."
   test -d ../_vxopenlibm && rm -rf ../_vxopenlibm
   callcmd \
     git \
