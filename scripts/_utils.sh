@@ -18,7 +18,7 @@ export TAG='<vxLibc>'
 
 # abstract the verbose mode
 function callcmd() {
-  if [[ -v 'VERBOSE' ]]
+  if [[ "$VERBOSE" == '1' ]]
     then
       echo "$@"
       if ! "$@"; then
