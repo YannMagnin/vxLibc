@@ -1,4 +1,4 @@
-# vxLibc
+# vxLibc - v1.0.0
 
 This is a wrapper around the
 [fxlibc](https://gitea.planet-casio.com/Vhex-Kernel-Core/fxlibc) project
