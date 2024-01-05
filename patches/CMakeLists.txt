@@ -229,5 +229,5 @@ install(TARGETS vxlibcStatic DESTINATION lib)
 install(TARGETS vxlibcShared DESTINATION lib)
 
 install(DIRECTORY include/ DESTINATION include PATTERN "target" EXCLUDE)
-install(DIRECTORY include/target/vhex DESTINATION include/target)
-install(DIRECTORY include/target/sh-generic DESTINATION include/target)
+install(DIRECTORY include/target/vhex/ DESTINATION include/)
+install(DIRECTORY include/target/sh-generic/ DESTINATION include/)
