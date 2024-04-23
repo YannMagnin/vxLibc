@@ -119,7 +119,7 @@ echo "$TAG clone fxlibc..."
 callcmd \
   git \
   clone \
-  https://gitea.planet-casio.com/Vhex-Kernel-Core/fxlibc.git \
+  https://git.planet-casio.com/Vhex-Kernel-Core/fxlibc.git \
   --depth 1 \
   ../_fxlibc
 
