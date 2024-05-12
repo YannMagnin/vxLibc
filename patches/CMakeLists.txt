@@ -151,6 +151,9 @@ file(
     src/stdlib/strtoul.c
     src/stdlib/strtoull.c
 
+    # unistd
+    src/unistd/_exit.c
+
     # string
     src/string/memchr.c
     src/string/memcmp.c

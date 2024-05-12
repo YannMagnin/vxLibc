@@ -121,6 +121,7 @@ callcmd \
   clone \
   https://git.planet-casio.com/Vhex-Kernel-Core/fxlibc.git \
   --depth 1 \
+  --branch 'dev' \
   ../_fxlibc
 
 echo "$TAG apply patches..."
