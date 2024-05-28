@@ -204,16 +204,20 @@ set_property(GLOBAL PROPERTY TARGET_SUPPORTS_SHARED_LIBS TRUE)
 add_compile_options(
     -D__SUPPORT_VHEX_KERNEL=1
     -D__SUPPORT_ARCH_SH=1
-    "$<$<COMPILE_LANGUAGE:C>:-m3;-mb>"
-    "$<$<COMPILE_LANGUAGE:ASM>:-m4-nofpu;-mb;-Wa,--dsp>"
+    -m4-nofpu
+    -mb
+    -Wa,--dsp
     -Wall
     -Wextra
     -std=c11
+    -Os
     -ffreestanding
+    -fanalyzer
     -nostdlib
     -fPIC
-    -Os
+    -flto
 )
+add_link_options(-flto)
 include_directories(
     include/
     include/target/vhex/
@@ -227,6 +231,12 @@ add_library(vxlibcShared SHARED ${VXLIBC_SOURCES})
 
 set_target_properties(vxlibcStatic PROPERTIES OUTPUT_NAME "c")
 set_target_properties(vxlibcShared PROPERTIES OUTPUT_NAME "c")
+
+# Generate the archive with gcc-ar instead of ar as it will load the LTO
+# plugin which is required to generate a usable archive.
+set(CMAKE_C_ARCHIVE_CREATE "${CMAKE_C_COMPILER_AR} qcs <TARGET> <OBJECTS>")
+# Also the ranlib rule (useless because ar is passed the s flag anyway)
+set(CMAKE_C_ARCHIVE_FINISH "${CMAKE_C_COMPILER_RANLIB} <TARGET>")
 
 install(TARGETS vxlibcStatic DESTINATION lib)
 install(TARGETS vxlibcShared DESTINATION lib)
